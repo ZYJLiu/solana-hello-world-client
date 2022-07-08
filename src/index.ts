@@ -4,10 +4,10 @@ import Dotenv from "dotenv";
 Dotenv.config();
 
 let programId = new web3.PublicKey(
-  "EUQY7xg64E5KPvDuS8nyE3Q9Y2WmYL4NWYuakLr8pUr5"
+  "BqVKfPaq8URcFWnaEcTx2avF8QxGhK3oCQyz9foPnpPV"
 );
 
-let connection = new web3.Connection(web3.clusterApiUrl("devnet"));
+let connection = new web3.Connection("http://localhost:8899");
 
 async function main() {
   let payer = await initializeKeypair(connection);
@@ -16,7 +16,7 @@ async function main() {
   const transactionSignature = await sayHello(payer);
 
   console.log(
-    `Transaction: https://explorer.solana.com/tx/${transactionSignature}?cluster=devnet`
+    `Transaction: https://explorer.solana.com/tx/${transactionSignature}?cluster=custom`
   );
 }
 
@@ -49,4 +49,3 @@ export async function sayHello(
 
   return transactionSignature;
 }
-
